@@ -1,0 +1,116 @@
+site_name: GigQ Documentation
+site_description: Documentation for GigQ - A lightweight job queue system with SQLite backend
+site_author: GigQ Team
+repo_url: https://github.com/gigq/gigq
+repo_name: gigq/gigq
+edit_uri: edit/main/docs/
+
+theme:
+  name: material
+  palette:
+    # Light mode
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/toggle-switch-off-outline
+        name: Switch to dark mode
+    # Dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/toggle-switch
+        name: Switch to light mode
+  features:
+    - navigation.instant
+    - navigation.tracking
+    - navigation.expand
+    - navigation.indexes
+    - navigation.top
+    - search.highlight
+    - search.share
+    - content.code.copy
+  icon:
+    repo: fontawesome/brands/github
+
+markdown_extensions:
+  - admonition
+  - attr_list
+  - def_list
+  - footnotes
+  - md_in_html
+  - toc:
+      permalink: true
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.emoji:
+      emoji_index: !!python/name:materialx.emoji.twemoji
+      emoji_generator: !!python/name:materialx.emoji.to_svg
+
+plugins:
+  - search
+  - mkdocstrings:
+      handlers:
+        python:
+          paths: [gigq]
+          options:
+            show_source: true
+            show_category_heading: true
+            show_if_no_docstring: false
+  - git-revision-date-localized:
+      type: date
+  - minify:
+      minify_html: true
+
+nav:
+  - Home: index.md
+  - Getting Started:
+      - Installation: getting-started/installation.md
+      - Quick Start: getting-started/quick-start.md
+      - Concepts: getting-started/concepts.md
+  - User Guide:
+      - Defining Jobs: user-guide/defining-jobs.md
+      - Job Queue: user-guide/job-queue.md
+      - Workers: user-guide/workers.md
+      - Workflows: user-guide/workflows.md
+      - Error Handling: user-guide/error-handling.md
+      - Command Line Interface: user-guide/cli.md
+  - Examples:
+      - GitHub Archive Processing: examples/github-archive.md
+      - Data Processing Pipeline: examples/data-processing.md
+      - Scheduled Background Tasks: examples/scheduled-tasks.md
+  - API Reference:
+      - Core: api/core.md
+      - CLI: api/cli.md
+  - Advanced Topics:
+      - SQLite Schema: advanced/sqlite-schema.md
+      - Concurrency: advanced/concurrency.md
+      - Performance: advanced/performance.md
+      - Custom Job Types: advanced/custom-job-types.md
+  - Development:
+      - Contributing: development/contributing.md
+      - Testing: development/testing.md
+      - Roadmap: development/roadmap.md
+  - FAQ: faq.md
+  - Changelog: changelog.md
+
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/gigq/gigq
+    - icon: fontawesome/brands/python
+      link: https://pypi.org/project/gigq/
+  version:
+    provider: mike
