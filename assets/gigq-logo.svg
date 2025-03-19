@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 640">
+  <!-- Dark background -->
+  <rect width="1280" height="640" fill="#0D1117"/>
+  
+  <!-- GigQ text -->
+  <text x="350" y="340" font-family="Courier New, monospace" font-weight="bold" font-size="180" fill="#62A9DD">Gig</text>
+  <text x="710" y="340" font-family="Courier New, monospace" font-weight="bold" font-size="180" fill="#90CAF9">Q</text>
+  
+  <!-- Tagline -->
+  <text x="350" y="420" font-family="Courier New, monospace" font-size="48" fill="#E0E0E0">Lightweight SQLite Job Queue</text>
+</svg>

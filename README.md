@@ -1,3 +1,15 @@
+<p align="center">
+  <img src="assets/gigq-logo.svg" alt="GigQ Logo" width="400"/>
+</p>
+
+<p align="center">
+  <a href="https://pypi.org/project/gigq/"><img alt="PyPI" src="https://img.shields.io/pypi/v/gigq.svg?style=flat-square"></a>
+  <a href="https://pypi.org/project/gigq/"><img alt="Python Versions" src="https://img.shields.io/pypi/pyversions/gigq.svg?style=flat-square"></a>
+  <a href="https://github.com/KPouianou/GigQ/blob/main/LICENSE"><img alt="License" src="https://img.shields.io/github/license/KPouianou/GigQ?style=flat-square"></a>
+  <a href="https://github.com/KPouianou/GigQ/actions"><img alt="Build Status" src="https://img.shields.io/github/actions/workflow/status/KPouianou/GigQ/ci.yml?branch=main&style=flat-square"></a>
+  <a href="https://codecov.io/gh/KPouianou/GigQ"><img alt="Coverage" src="https://img.shields.io/codecov/c/github/KPouianou/GigQ?style=flat-square"></a>
+</p>
+
 # GigQ
 
 GigQ is a lightweight job queue system with SQLite as its backend. It's designed for managing and executing small jobs ("gigs") locally with atomicity guarantees, particularly suited for processing tasks like GitHub Archive data, without the complexity of distributed job systems.
