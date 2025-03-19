@@ -1,2 +1,0 @@
-[console_scripts]
-gigq = gigq.cli:main

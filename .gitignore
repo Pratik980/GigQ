@@ -64,3 +64,6 @@ gigq-env/
 # OS specific files
 .DS_Store
 Thumbs.db
+
+# MkDocs documentation
+site/
