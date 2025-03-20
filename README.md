@@ -1,6 +1,7 @@
-<p align="center">
-  <img src="assets/gigq-logo.svg" alt="GigQ Logo" width="400"/>
-</p>
+<h1 align="center">
+  <span style="color: #4f81e6;">Gig</span><span style="color: #60cdff;">Q</span>
+</h1>
+<p align="center">Lightweight SQLite Job Queue</p>
 
 <p align="center">
   <a href="https://pypi.org/project/gigq/"><img alt="PyPI" src="https://img.shields.io/pypi/v/gigq.svg?style=flat-square"></a>

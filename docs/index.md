@@ -1,32 +1,23 @@
 # GigQ: Lightweight Local Job Queue
 
-<div class="grid cards" markdown>
-
-- :material-bolt-circle: **Simple by Design**
-
-  ***
-
-  Define, queue, and process jobs with minimal setup and configuration
-
-- :material-database-lock: **SQLite Powered**
-
-  ***
-
-  Built on SQLite for reliability and simplicity with no extra dependencies
-
-- :material-file-tree: **Workflow Support**
-
-  ***
-
-  Create complex job workflows with dependencies and prioritization
-
-- :material-scale-balance: **Lightweight Concurrency**
-
-  ***
-
-  Process jobs in parallel with built-in locking and state management
-
+<div style="text-align: center; margin: 30px 0;">
+  <h1 style="font-size: 3.5rem; margin: 0; padding: 0;">
+    <span style="color: #4f81e6;">Gig</span><span style="color: #60cdff;">Q</span>
+  </h1>
+  <p style="margin: 0; padding: 0; color: #a0aec0;">Lightweight SQLite Job Queue</p>
 </div>
+
+GigQ is a lightweight job queue system with SQLite as its backend. It's designed for managing and executing small jobs ("gigs") locally with atomicity guarantees, particularly suited for processing tasks like data transformations, API calls, or batch operations, without the complexity of distributed job systems.
+
+## Key Features
+
+- **Simple by Design** - Define, queue, and process jobs with minimal setup and configuration
+
+- **SQLite Powered** - Built on SQLite for reliability and simplicity with no extra dependencies
+
+- **Workflow Support** - Create complex job workflows with dependencies and prioritization
+
+- **Lightweight Concurrency** - Process jobs in parallel with built-in locking and state management
 
 ## What is GigQ?
 
@@ -64,15 +55,6 @@ GigQ fills the gap between complex distributed job queues (like Celery or RQ) an
 - **Workflow orchestration** - Build simple workflows with dependencies and state management
 
 All without the overhead of setting up Redis, RabbitMQ, or other external services.
-
-## Key Features
-
-- **Simple job definition and management**
-- **SQLite state storage with atomic transactions**
-- **Lightweight concurrency with built-in locking**
-- **Job recovery and error handling**
-- **Command line interface for job management**
-- **Workflow support with dependencies**
 
 ## Job Lifecycle
 
