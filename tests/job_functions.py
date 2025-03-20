@@ -55,14 +55,58 @@ def work_counter_job(job_id, counter_dict):
         counter_dict[job_id] = 1
     return {"job_id": job_id, "completed": True, "count": counter_dict[job_id]}
 
-def retry_job(attempts_dict, job_id, fail_times=1):
-    """Job that fails a specified number of times before succeeding."""
-    if job_id not in attempts_dict:
-        attempts_dict[job_id] = 0
+def retry_job(job_id="default", fail_times=1, state_db=None, attempts_dict=None):
+    """
+    Job that fails a specified number of times before succeeding.
     
-    attempts_dict[job_id] += 1
+    Args:
+        job_id: Identifier for the job
+        fail_times: Number of times to fail before succeeding
+        state_db: Path to a SQLite database where attempts are tracked (for persistence)
+        attempts_dict: Dictionary to track attempts (not reliable across job reruns)
+    """
+    attempts = 0
     
-    if attempts_dict[job_id] <= fail_times:
-        raise ValueError(f"Deliberate failure #{attempts_dict[job_id]}")
+    # Use SQLite to track attempts if specified
+    if state_db:
+        conn = sqlite3.connect(state_db)
+        
+        # Create attempts table if it doesn't exist
+        conn.execute('''
+        CREATE TABLE IF NOT EXISTS attempts (
+            job_id TEXT PRIMARY KEY,
+            count INTEGER
+        )
+        ''')
+        
+        # Get current attempt count
+        cursor = conn.execute('SELECT count FROM attempts WHERE job_id = ?', (job_id,))
+        row = cursor.fetchone()
+        
+        if row:
+            attempts = row[0]
+        
+        # Increment attempts
+        attempts += 1
+        
+        # Update or insert the attempt count
+        conn.execute('''
+        INSERT OR REPLACE INTO attempts (job_id, count) VALUES (?, ?)
+        ''', (job_id, attempts))
+        
+        conn.commit()
+        conn.close()
     
-    return {"success": True, "attempts": attempts_dict[job_id]}
+    # Dictionary-based attempt tracking (works only in single process without job requeues)
+    elif attempts_dict is not None:
+        if job_id not in attempts_dict:
+            attempts_dict[job_id] = 0
+        
+        attempts_dict[job_id] += 1
+        attempts = attempts_dict[job_id]
+    
+    # Fail if we haven't reached the required number of attempts
+    if attempts <= fail_times:
+        raise ValueError(f"Deliberate failure #{attempts}")
+    
+    return {"success": True, "attempts": attempts}

@@ -1,4 +1,7 @@
 """Tests for error handling and job recovery."""
+import os
+import tempfile
+import sqlite3
 from gigq import Job, JobStatus
 from tests.integration.base import IntegrationTestBase
 from tests.job_functions import retry_job, failing_job
@@ -7,14 +10,24 @@ class TestErrorHandlingAndRecovery(IntegrationTestBase):
     """Test error handling and job recovery."""
     
     def test_job_retry_on_failure(self):
-        # A dictionary to track attempt counts
-        attempts_dict = {}
+        # Create a SQLite database for tracking attempts
+        _, tracker_db_path = tempfile.mkstemp(suffix='.db')
+        os.close(_)  # Close the file descriptor
         
-        # Create a job with retry
+        # Register for cleanup
+        self.addCleanup(lambda: os.path.exists(tracker_db_path) and os.unlink(tracker_db_path))
+        
+        # Initialize the tracking database
+        conn = sqlite3.connect(tracker_db_path)
+        conn.execute("CREATE TABLE IF NOT EXISTS attempts (job_id TEXT PRIMARY KEY, count INTEGER)")
+        conn.commit()
+        conn.close()
+        
+        # Create a job with retry using the SQLite tracker
         job = Job(
             name="failing_job",
             function=retry_job,
-            params={"attempts_dict": attempts_dict, "job_id": "test1", "fail_times": 1},
+            params={"job_id": "test1", "fail_times": 1, "state_db": tracker_db_path},
             max_attempts=3
         )
         
