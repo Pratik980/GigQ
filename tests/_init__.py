@@ -1,1 +1,0 @@
-"""GigQ test suite"""
