@@ -46,7 +46,7 @@ docs = [
 ]
 dev = [
     "pytest",
-    "flake8",
+    "black",
     "coverage",
     "mypy",
 ]
@@ -71,6 +71,24 @@ gigq = ["py.typed"]
 [tool.pytest.ini_options]
 testpaths = ["tests"]
 python_files = "test_*.py"
+
+[tool.black]
+line-length = 88
+target-version = ["py37", "py38", "py39", "py310", "py311", "py13"]
+include = '\.pyi?$'
+exclude = '''
+/(
+    \.git
+  | \.hg
+  | \.mypy_cache
+  | \.tox
+  | \.venv
+  | _build
+  | buck-out
+  | build
+  | dist
+)/
+'''
 
 [tool.mypy]
 python_version = "3.7"
