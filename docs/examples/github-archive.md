@@ -12,7 +12,7 @@ The workflow will:
 
 ## Full Code Example
 
-Below is the complete example, which is also available in [`examples/github_archive.py`](https://github.com/gigq/gigq/blob/main/examples/github_archive.py) in the GigQ repository:
+Below is the complete example, which is also available in [`examples/github_archive.py`](https://github.com/kpouianou/gigq/blob/main/examples/github_archive.py) in the GigQ repository:
 
 ```python
 """
@@ -552,6 +552,7 @@ This example demonstrates the basic functionality of GigQ for processing GitHub 
    ```
 
 3. **Date Range Processing**: Extend the example to process a range of dates:
+
    ```python
    def process_date_range(start_date, end_date):
        current_date = datetime.strptime(start_date, "%Y-%m-%d")

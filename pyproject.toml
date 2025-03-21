@@ -4,7 +4,89 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "gigq"
+version = "0.1.0"
 description = "A lightweight job queue system with SQLite backend"
 readme = "README.md"
 requires-python = ">=3.7"
 license = {file = "LICENSE"}
+authors = [
+    {name = "GigQ Team", email = "info@gigq.dev"}
+]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.7",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+]
+dependencies = [
+    "tabulate",
+    "importlib-metadata>=1.0; python_version < '3.8'",
+]
+
+[project.optional-dependencies]
+examples = [
+    "requests",
+    "pandas",
+    "schedule",
+]
+docs = [
+    "mkdocs-material",
+    "pymdown-extensions",
+    "mkdocstrings[python]",
+    "mkdocs-git-revision-date-localized-plugin",
+    "mkdocs-minify-plugin",
+    "mike",
+]
+dev = [
+    "pytest",
+    "flake8",
+    "coverage",
+    "mypy",
+]
+all = [
+    "gigq[examples,docs,dev]",
+]
+
+[project.urls]
+Homepage = "https://github.com/kpouianou/gigq"
+Documentation = "https://gigq.github.io/gigq"
+Issues = "https://github.com/kpouianou/gigq/issues"
+
+[project.scripts]
+gigq = "gigq.cli:main"
+
+[tool.setuptools]
+packages = ["gigq"]
+
+[tool.setuptools.package-data]
+gigq = ["py.typed"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = "test_*.py"
+
+[tool.mypy]
+python_version = "3.7"
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = false
+disallow_incomplete_defs = false
+
+[tool.coverage.run]
+source = ["gigq"]
+omit = ["tests/*"]
+
+[tool.coverage.report]
+exclude_lines = [
+    "pragma: no cover",
+    "def __repr__",
+    "raise NotImplementedError",
+    "if __name__ == .__main__.:",
+]

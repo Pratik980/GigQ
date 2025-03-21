@@ -42,7 +42,7 @@ pip install "gigq[examples,docs,dev]"
 To install the latest development version from GitHub:
 
 ```bash
-git clone https://github.com/gigq/gigq.git
+git clone https://github.com/kpouianou/gigq.git
 cd gigq
 pip install -e .
 ```

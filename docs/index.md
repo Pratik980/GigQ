@@ -85,4 +85,4 @@ Check out the [Quick Start Guide](getting-started/quick-start.md) to begin using
 
 ## License
 
-GigQ is released under the MIT License. See [LICENSE](https://github.com/gigq/gigq/blob/main/LICENSE) for details.
+GigQ is released under the MIT License. See [LICENSE](https://github.com/kpouianou/gigq/blob/main/LICENSE) for details.

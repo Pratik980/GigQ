@@ -375,13 +375,13 @@ We welcome contributions! You can:
 ### How do I run the GigQ tests?
 
 ```bash
-git clone https://github.com/gigq/gigq.git
+git clone https://github.com/kpouianou/gigq.git
 cd gigq
 python -m unittest discover tests
 ```
 
 ### Where can I get help with GigQ?
 
-- Check the [documentation](https://github.com/gigq/gigq)
-- Create an issue on [GitHub](https://github.com/gigq/gigq/issues)
+- Check the [documentation](https://github.com/kpouianou/gigq)
+- Create an issue on [GitHub](https://github.com/kpouianou/gigq/issues)
 - Ask questions on Stack Overflow with the "gigq" tag

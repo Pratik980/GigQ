@@ -1,8 +1,8 @@
 site_name: GigQ Documentation
 site_description: Documentation for GigQ - A lightweight job queue system with SQLite backend
 site_author: GigQ Team
-repo_url: https://github.com/gigq/gigq
-repo_name: gigq/gigq
+repo_url: https://github.com/kpouianou/gigq
+repo_name: kpouianou/gigq
 edit_uri: edit/main/docs/
 
 theme:
@@ -109,7 +109,7 @@ nav:
 extra:
   social:
     - icon: fontawesome/brands/github
-      link: https://github.com/gigq/gigq
+      link: https://github.com/kpouianou/gigq
     - icon: fontawesome/brands/python
       link: https://pypi.org/project/gigq/
   version:

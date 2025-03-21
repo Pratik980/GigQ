@@ -89,7 +89,7 @@ For contributors and developers:
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/gigq/gigq.git
+   git clone https://github.com/kpouianou/gigq.git
    cd gigq
    ```
 

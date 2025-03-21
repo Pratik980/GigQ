@@ -60,7 +60,7 @@ While not yet released, these features are planned for future versions:
 
 GigQ is open for contributions. If you'd like to contribute, please:
 
-1. Check the [issue tracker](https://github.com/gigq/gigq/issues) for open issues
+1. Check the [issue tracker](https://github.com/kpouianou/gigq/issues) for open issues
 2. Submit a pull request with your changes
 3. Ensure tests pass and code meets the project's style guidelines
 
