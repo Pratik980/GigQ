@@ -17,7 +17,25 @@ The simplest way to install GigQ is via pip:
 pip install gigq
 ```
 
-This will install the latest stable version of GigQ from PyPI.
+This will install the latest stable version of GigQ from PyPI with minimal dependencies.
+
+## Installation with Extra Features
+
+GigQ uses "extras" to manage optional dependencies. You can install GigQ with additional dependencies for specific features:
+
+```bash
+# Install with dependencies for running examples
+pip install "gigq[examples]"
+
+# Install with dependencies for building documentation
+pip install "gigq[docs]"
+
+# Install with dependencies for development
+pip install "gigq[dev]"
+
+# Install with all extra dependencies
+pip install "gigq[examples,docs,dev]"
+```
 
 ## Installation from Source
 
@@ -30,6 +48,12 @@ pip install -e .
 ```
 
 The `-e` flag installs the package in "editable" mode, which is useful for development.
+
+For development with all dependencies:
+
+```bash
+pip install -e ".[examples,docs,dev]"
+```
 
 ## Installation in a Virtual Environment
 
@@ -85,17 +109,42 @@ python -c "import gigq; print(gigq.__version__)"
 
 You should see the version number of GigQ printed.
 
-## Installing Optional Dependencies
+## Dependencies
 
-GigQ has minimal dependencies by design, but you might want to install additional packages for specific use cases:
+GigQ has the following dependency categories:
 
-```bash
-# For development and testing
-pip install gigq[dev]
+### Build Dependencies
 
-# For visualization capabilities
-pip install gigq[viz]
-```
+- setuptools (>=42)
+- wheel
+
+### Core Dependencies
+
+- Python 3.7+
+- importlib-metadata (for Python < 3.8)
+- tabulate (for CLI formatting)
+
+### Example Dependencies [examples]
+
+- pandas
+- requests
+- schedule
+
+### Documentation Dependencies [docs]
+
+- mkdocs-material
+- pymdown-extensions
+- mkdocstrings[python]
+- mkdocs-git-revision-date-localized-plugin
+- mkdocs-minify-plugin
+- mike
+
+### Development Dependencies [dev]
+
+- pytest
+- flake8
+- coverage
+- mypy
 
 ## System-specific Notes
 

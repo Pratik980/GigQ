@@ -24,11 +24,36 @@ setup(
         "Programming Language :: Python :: 3.7",
         "Programming Language :: Python :: 3.8",
         "Programming Language :: Python :: 3.9",
+        "Programming Language :: Python :: 3.10",
+        "Programming Language :: Python :: 3.11",
+        "Programming Language :: Python :: 3.12",
     ],
     python_requires=">=3.7",
     install_requires=[
         "importlib-metadata>=1.0; python_version < '3.8'",
+        "tabulate",  # Required for CLI
     ],
+    extras_require={
+        "examples": [
+            "requests",  # For HTTP examples
+            "pandas",    # For data processing examples
+            "schedule",  # For scheduled tasks example
+        ],
+        "docs": [
+            "mkdocs-material",
+            "pymdown-extensions",
+            "mkdocstrings[python]",
+            "mkdocs-git-revision-date-localized-plugin",
+            "mkdocs-minify-plugin",
+            "mike",
+        ],
+        "dev": [
+            "pytest",
+            "flake8",
+            "coverage",
+            "mypy",
+        ],
+    },
     entry_points={
         "console_scripts": [
             "gigq=gigq.cli:main",

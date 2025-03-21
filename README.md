@@ -51,27 +51,76 @@ GigQ is a lightweight job queue system with SQLite as its backend. It's designed
 ## Project Structure
 
 The GigQ library is organized as follows:
-gigq/ # Root project directory
-├── gigq/ # Main package directory
-│ ├── **init**.py # Package initialization (exports main classes)
-│ ├── core.py # Core implementation (Job, JobQueue, Worker, Workflow)
-│ └── cli.py # Command-line interface
-├── examples/ # Example applications
-│ ├── **init**.py # Empty file to make examples a package
-│ └── github_archive.py # GitHub Archive processing example
-├── tests/ # Test directory
-│ ├── **init**.py # Empty file to make tests a package
-│ └── test_gigq.py # Test suite
-├── README.md # Project documentation
-├── LICENSE # MIT License
-├── setup.py # Package configuration for installation
-└── pyproject.toml # Build system requirements (optional)
+
+```
+gigq/                          # Root project directory
+├── gigq/                      # Main package directory
+│   ├── __init__.py            # Package initialization (exports main classes)
+│   ├── core.py                # Core implementation (Job, JobQueue, Worker, Workflow)
+│   └── cli.py                 # Command-line interface
+├── examples/                  # Example applications
+│   ├── __init__.py            # Empty file to make examples a package
+│   └── github_archive.py      # GitHub Archive processing example
+├── tests/                     # Test directory
+│   ├── __init__.py            # Empty file to make tests a package
+│   └── test_gigq.py           # Test suite
+├── README.md                  # Project documentation
+├── LICENSE                    # MIT License
+├── setup.py                   # Package configuration for installation
+└── pyproject.toml             # Build system requirements (optional)
+```
 
 ## Installation
+
+### Basic Installation
+
+Install GigQ from PyPI:
 
 ```bash
 pip install gigq
 ```
+
+This installs the core package with minimal dependencies.
+
+### Development Installation
+
+For contributors and developers:
+
+1. Clone the repository:
+
+   ```bash
+   git clone https://github.com/gigq/gigq.git
+   cd gigq
+   ```
+
+2. Install in development mode with all dependencies:
+
+   ```bash
+   # Install core package in development mode
+   pip install -e .
+
+   # For running examples
+   pip install -e ".[examples]"
+
+   # For building documentation
+   pip install -e ".[docs]"
+
+   # For development (linting, testing)
+   pip install -e ".[dev]"
+
+   # Or install everything at once
+   pip install -e ".[examples,docs,dev]"
+   ```
+
+### Dependencies
+
+- **Build dependencies**: setuptools (>=42) and wheel
+- **Core dependencies**: Python 3.7+ and tabulate
+- **Examples**: Additional dependencies for running examples include pandas, requests, and schedule
+- **Documentation**: MkDocs and related plugins for building the documentation (mkdocs-material, pymdown-extensions, mkdocstrings[python], etc.)
+- **Development**: Testing and code quality tools (pytest, flake8, coverage, mypy, etc.)
+
+Note: If you're only interested in using the CLI or basic functionality, the standard installation is sufficient.
 
 ## Quick Start
 
@@ -216,9 +265,10 @@ For local development:
 
 1. Clone the repository
 2. Create a virtual environment
-3. Install in development mode: `pip install -e .`
-4. Run tests: `python -m unittest discover tests`
+3. Install build dependencies: `pip install setuptools wheel`
+4. Install in development mode: `pip install -e .`
+5. Run tests: `python -m unittest discover tests`
 
 ## License
 
-MIT
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
