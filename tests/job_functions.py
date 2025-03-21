@@ -45,15 +45,58 @@ def sleep_job(duration):
     time.sleep(duration)
     return {"slept_for": duration}
 
-def work_counter_job(job_id, counter_dict):
-    """Job that increments a counter in a shared dictionary."""
+def work_counter_job(job_id, counter_dict=None, counter_db=None):
+    """
+    Job that increments a counter in a shared dictionary or database.
+    
+    Args:
+        job_id: Identifier for the job
+        counter_dict: Dictionary to track counts (doesn't work reliably across threads)
+        counter_db: Path to SQLite database for reliable cross-thread counting
+    """
     import time
     time.sleep(0.1)  # Simulate some work
-    if job_id in counter_dict:
-        counter_dict[job_id] += 1
+    
+    # Use SQLite if provided (for reliable cross-thread counting)
+    if counter_db:
+        import sqlite3
+        conn = sqlite3.connect(counter_db)
+        cursor = conn.cursor()
+        
+        # Create counter table if it doesn't exist
+        conn.execute('''
+        CREATE TABLE IF NOT EXISTS counter (
+            job_id TEXT PRIMARY KEY,
+            count INTEGER
+        )
+        ''')
+        
+        # Insert or increment counter
+        conn.execute('''
+        INSERT OR REPLACE INTO counter (job_id, count)
+        VALUES (?, COALESCE((SELECT count FROM counter WHERE job_id = ?) + 1, 1))
+        ''', (job_id, job_id))
+        
+        # Get the current count
+        cursor = conn.execute('SELECT count FROM counter WHERE job_id = ?', (job_id,))
+        count = cursor.fetchone()[0]
+        
+        conn.commit()
+        conn.close()
+        
+        return {"job_id": job_id, "completed": True, "count": count}
+        
+    # Fall back to dictionary (not reliable across threads)
+    elif counter_dict is not None:
+        if job_id in counter_dict:
+            counter_dict[job_id] += 1
+        else:
+            counter_dict[job_id] = 1
+        return {"job_id": job_id, "completed": True, "count": counter_dict[job_id]}
+    
+    # No counter specified
     else:
-        counter_dict[job_id] = 1
-    return {"job_id": job_id, "completed": True, "count": counter_dict[job_id]}
+        return {"job_id": job_id, "completed": True}
 
 def retry_job(job_id="default", fail_times=1, state_db=None, attempts_dict=None):
     """
