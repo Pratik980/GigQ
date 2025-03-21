@@ -111,10 +111,10 @@ For contributors and developers:
    pip install -e ".[examples,docs,dev]"
    ```
 
-### Dependencies
+## Dependencies
 
 - **Build dependencies**: setuptools (>=42) and wheel
-- **Core dependencies**: Python 3.7+ and tabulate
+- **Core dependencies**: Python 3.9+ and tabulate
 - **Examples**: Additional dependencies for running examples include pandas, requests, and schedule
 - **Documentation**: MkDocs and related plugins for building the documentation (mkdocs-material, pymdown-extensions, mkdocstrings[python], etc.)
 - **Development**: Testing and code quality tools (pytest, flake8, coverage, mypy, etc.)
