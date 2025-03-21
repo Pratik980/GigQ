@@ -1,7 +1,9 @@
 """Run all integration tests."""
+
 import unittest
 import sys
 import os
+
 
 def create_integration_test_suite():
     """Create a test suite with all integration tests."""
@@ -10,6 +12,7 @@ def create_integration_test_suite():
     test_loader = unittest.TestLoader()
     test_suite = test_loader.discover(current_dir, pattern="test_*.py")
     return test_suite
+
 
 if __name__ == "__main__":
     runner = unittest.TextTestRunner(verbosity=2)
