@@ -2,7 +2,8 @@
 GigQ: A lightweight job queue system with SQLite backend
 """
 
-from .core import Job, JobQueue, Worker, Workflow, JobStatus
+# Import directly from gigq package instead of relative import
+from gigq.core import Job, JobQueue, Worker, Workflow, JobStatus
 
 # Get version from installed package
 try:
@@ -14,13 +15,7 @@ try:
         __version__ = "0.1.1"  # Default development version
 except ImportError:
     # Fallback for Python < 3.8
-    try:
-        from importlib_metadata import version, PackageNotFoundError
-        try:
-            __version__ = version("gigq")
-        except PackageNotFoundError:
-            __version__ = "0.1.1"  # Default development version
-    except ImportError:
-        __version__ = "0.1.1"  # Default development version
+    # Make importlib_metadata optional, only needed for Python < 3.8
+    __version__ = "0.1.1"  # Default development version
 
 __all__ = ["Job", "JobQueue", "Worker", "Workflow", "JobStatus"]

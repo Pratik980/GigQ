@@ -5,7 +5,7 @@ import tempfile
 import os
 import time
 import threading
-from gigq import Job, JobQueue, Worker, Workflow, JobStatus
+from gigq import JobQueue, Worker
 
 
 class IntegrationTestBase(unittest.TestCase):
