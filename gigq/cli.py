@@ -1,5 +1,8 @@
 """
 GigQ CLI Interface
+
+This is a replacement for the existing gigq/cli.py file.
+The key change is replacing the tabulate dependency with our custom table_formatter.
 """
 
 import argparse
@@ -8,9 +11,9 @@ import os
 import sys
 import time
 from datetime import datetime, timedelta
-from tabulate import tabulate
 
 from gigq import JobQueue, Worker, JobStatus
+from gigq.table_formatter import format_table
 
 
 def format_time(timestamp):
@@ -120,7 +123,7 @@ def cmd_status(args):
                     execution["status"],
                 ]
             )
-        print(tabulate(rows, headers=headers))
+        print(format_table(rows, headers=headers))
 
     return 0
 
@@ -159,7 +162,7 @@ def cmd_list(args):
             ]
         )
 
-    print(tabulate(rows, headers=headers))
+    print(format_table(rows, headers=headers))
     return 0
 
 

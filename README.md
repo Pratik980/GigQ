@@ -12,9 +12,15 @@
 
 # GigQ
 
-GigQ is a lightweight job queue system with SQLite as its backend. It's designed for managing and executing small jobs ("gigs") locally with atomicity guarantees, particularly suited for processing tasks like GitHub Archive data, without the complexity of distributed job systems.
+GigQ is a lightweight job queue system with SQLite as its backend. It provides a reliable way to manage and execute small jobs ("gigs") locally with atomicity guarantees, particularly suited for processing tasks like data transformations, API calls, or batch operations.
 
 ## Features
+
+- **Zero External Dependencies**
+
+  - No external packages required
+  - Uses Python's built-in sqlite3 module
+  - Everything needed is bundled with GigQ - no dependency conflicts to worry about
 
 - **Simple Job Definition & Management**
 

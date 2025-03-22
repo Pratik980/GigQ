@@ -67,3 +67,8 @@ Thumbs.db
 
 # MkDocs documentation
 site/
+
+# Ensure no accidental editor backup files with tabulate are included
+*~
+.*.swp
+.*.swo
