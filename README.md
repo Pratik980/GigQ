@@ -58,21 +58,63 @@ GigQ is a lightweight job queue system with SQLite as its backend. It provides a
 The GigQ library is organized as follows:
 
 ```
-gigq/                          # Root project directory
-├── gigq/                      # Main package directory
-│   ├── __init__.py            # Package initialization (exports main classes)
-│   ├── core.py                # Core implementation (Job, JobQueue, Worker, Workflow)
-│   └── cli.py                 # Command-line interface
-├── examples/                  # Example applications
-│   ├── __init__.py            # Empty file to make examples a package
-│   └── github_archive.py      # GitHub Archive processing example
-├── tests/                     # Test directory
-│   ├── __init__.py            # Empty file to make tests a package
-│   └── test_gigq.py           # Test suite
-├── README.md                  # Project documentation
-├── LICENSE                    # MIT License
-├── setup.py                   # Package configuration for installation
-└── pyproject.toml             # Build system requirements (optional)
+gigq/
+├── docs/                        # Documentation
+│   ├── advanced/               # Advanced topics
+│   ├── api/                    # API reference
+│   ├── examples/               # Documentation examples
+│   ├── getting-started/        # Getting started guides
+│   └── user-guide/             # User guides
+│
+├── examples/                    # Example applications
+│   ├── __init__.py
+│   └── github_archive.py       # GitHub Archive processing example
+│
+├── gigq/                        # Main package code
+│   ├── __init__.py             # Package initialization
+│   ├── core.py                 # Core implementation
+│   ├── cli.py                  # Command-line interface
+│   └── table_formatter.py      # Table formatting utilities
+│
+├── tests/                       # Test directory
+│   ├── __init__.py             # Test package initialization
+│   ├── README.md               # Test documentation
+│   ├── job_functions.py        # Shared test functions
+│   │
+│   ├── unit/                   # Unit tests
+│   │   ├── __init__.py
+│   │   ├── run_all.py          # Run all unit tests
+│   │   ├── test_cli.py         # CLI unit tests
+│   │   ├── test_cli_formatter.py  # CLI formatter tests
+│   │   ├── test_job.py         # Job class tests
+│   │   ├── test_job_queue.py   # JobQueue class tests
+│   │   ├── test_table_formatter.py  # Table formatter tests
+│   │   ├── test_worker.py      # Worker class tests
+│   │   └── test_workflow.py    # Workflow class tests
+│   │
+│   └── integration/            # Integration tests
+│       ├── __init__.py
+│       ├── base.py             # Base class for integration tests
+│       ├── run_all.py          # Run all integration tests
+│       ├── test_basic.py       # Basic job processing tests
+│       ├── test_basic_workflow.py  # Simple workflow tests
+│       ├── test_cli.py         # CLI integration tests
+│       ├── test_concurrent_workers.py  # Multiple workers tests
+│       ├── test_error_handling.py  # Error handling tests
+│       ├── test_persistence.py  # Persistence tests
+│       ├── test_timeout_handling.py  # Timeout handling tests
+│       └── test_workflow_dependencies.py  # Workflow dependencies tests
+│
+├── .github/                     # GitHub configuration
+│   └── workflows/               # GitHub Actions workflows
+│       ├── ci.yml              # Continuous integration workflow
+│       └── docs.yml            # Documentation deployment workflow
+│
+├── LICENSE                      # MIT License
+├── README.md                    # Project readme
+├── pyproject.toml               # Project configuration
+├── setup.py                     # Package setup script
+└── py.typed                     # Type hint marker
 ```
 
 ## Installation

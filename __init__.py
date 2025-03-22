@@ -8,6 +8,7 @@ from gigq.core import Job, JobQueue, Worker, Workflow, JobStatus
 # Get version from installed package
 try:
     from importlib.metadata import version, PackageNotFoundError
+
     try:
         __version__ = version("gigq")
     except PackageNotFoundError:
